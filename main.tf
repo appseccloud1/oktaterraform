@@ -1,15 +1,15 @@
 terraform {
-  required_version = "~> 1.0" 
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
+    okta = {
+      source = "okta/okta"
+      version = "~> 3.44"
     }
   }
 }
 
-
-provider "aws" {
-  region = var.aws_region
-  #profile = "default"
+# Configure the Okta Provider
+provider "okta" {
+  org_name  = "dev-123456"
+  base_url  = "oktapreview.com"
+  api_token = "xxxx"
 }
