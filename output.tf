@@ -1,19 +1,11 @@
-output "arn" {
-  description = "ARN OF BUCKET"
-  value       = aws_s3_bucket.aws_s3_bucket_terraform_cloud.arn
+output "public-ip" {
+  description = "Public IP"
+  value       = aws_instance.terraform-cloud-vm.*.public_ip
 }
 
-output "name" {
-  description = "NAME OF BUCKET"
-  value       = aws_s3_bucket.aws_s3_bucket_terraform_cloud.id
-}
 
-output "domain" {
-  description = "MAIN DOMAIN OF BUCKET"
-  value       = aws_s3_bucket.aws_s3_bucket_terraform_cloud.website_domain
-}
 
-output "endpoint" {
-  description = "URL OF BUCKET"
-  value       = aws_s3_bucket.aws_s3_bucket_terraform_cloud.website_endpoint
+output "publicdns" {
+  description = "URL EC2 Instance"
+  value       = aws_instance.terraform-cloud-vm.*.public_dns
 }

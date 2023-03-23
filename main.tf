@@ -1,28 +1,15 @@
-resource "aws_s3_bucket" "aws_s3_bucket_terraform_cloud" {
-  bucket = var.name_bucket
-  acl    = "public-read"
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-      {
-          "Sid": "PublicReadGetObject",
-          "Effect": "Allow",
-          "Principal": "*",
-          "Action": [
-              "s3:GetObject"
-          ],
-          "Resource": [
-              "arn:aws:s3:::${var.name_bucket}/*"
-          ]
-      }
-  ]
-}  
-EOF
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
+terraform {
+  required_version = "~> 1.0" 
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
   }
-  tags          = var.tags_bucket
-  force_destroy = true
+}
+
+
+provider "aws" {
+  region = var.aws_region
+  #profile = "default"
 }
